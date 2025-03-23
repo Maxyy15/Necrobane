@@ -105,10 +105,11 @@ public class Enemy : MonoBehaviour
             gameObject.SetActive(false);
             EnemyManager.Instance.enemyAttackingList.Remove(gameObject.GetComponent<Enemy>());
             AkSoundEngine.PostEvent("Play_SkeletonDeath", gameObject);
+            ItemDrop();
         }
     }
 
-    private void ItemDrop()
+    public void ItemDrop()
     {
         if(ItemDropObj.Length >= 0)
         {

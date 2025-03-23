@@ -19,13 +19,13 @@ public class InventoryHolder : MonoBehaviour
         {
             bool open = true;
 
-            if(InventoryObject.active && open)
+            if(InventoryObject.activeSelf && open)
             {
                 InventoryObject.SetActive(false);
                 open = false;
             } 
 
-            if(!InventoryObject.active && open)
+            if(!InventoryObject.activeSelf && open)
             {
                 InventoryObject.SetActive(true);
                 open = false;
@@ -68,8 +68,8 @@ public class InventoryHolder : MonoBehaviour
 
             if (Items[i].Objname == others.gameObject.GetComponent<Item>().Objname)
             {
-                Items[i].amount += others.gameObject.GetComponent<Item>().amount;
-                InventorySlots[i].amount = Items[i].amount;
+                InventorySlots[i].amount += others.gameObject.GetComponent<Item>().amount;
+                
                 Destroy(others.gameObject);
                 break;
             }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using AK.Wwise;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float setDecelerationSpeed = 9f;
     private float accelerationSpeed;
     private float decelerationSpeed;
+    private bool isSprinting;
 
     private Vector3 savedDirection = Vector3.zero;
 
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Others")]
     private CharacterController characterController;
+    [SerializeField] public PlayerProfile playerProfile;
 
     [Header("Wwise")]
     // Wwise
@@ -81,6 +84,25 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 UpdateMoveDirectionAndSpeed()
     {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (playerProfile.playerStamina <= 5)
+            {
+                maxSpeed = 4.5f;
+                isSprinting = false;
+            }
+            else
+            {
+                maxSpeed = 8f;
+                isSprinting = true;
+            }
+        }
+        else
+        {
+            maxSpeed = 4.5f;
+            isSprinting = false;
+        }
+
         if (cameraHolder == null)
         {
             Debug.LogError("Camera Holder is not assigned!");
@@ -103,9 +125,13 @@ public class PlayerController : MonoBehaviour
             else
             {
                 moveSpeed = Mathf.Lerp(moveSpeed, 0, decelerationSpeed * Time.deltaTime);
+
             }
         }
-
+        if (isSprinting)
+        {
+            playerProfile.DeductStamina(0.1f);
+        }
         return savedDirection.normalized * moveSpeed;
     }
 

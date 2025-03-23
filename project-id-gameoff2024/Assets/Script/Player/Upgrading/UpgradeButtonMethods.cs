@@ -25,19 +25,19 @@ public class UpgradeButtonMethods : MonoBehaviour
     {
         bool NeedExtra = uun.IsExtra;
 
-        for (int i = 0; i < uun.inv.Items.Count; i++)
+        for (int i = 0; i < uun.inv.InventorySlots.Count; i++)
         {
             if (!NeedExtra)
             {
-                if(uun.inv.Items[i] != null)
+                if(uun.inv.InventorySlots[i] != null)
                 {
-                    if (uun.inv.Items[i].Objname == NeededItem)
+                    if (uun.inv.InventorySlots[i].Objname == NeededItem)
                     {
-                        if(uun.inv.Items[i].amount >= NeededItemCost)
+                        if(uun.inv.InventorySlots[i].amount >= NeededItemCost)
                         {
                             uun.lvl += 1;
                             playerCombat.CurrentWeaponHolder.weapon.weaponData.WeaponBasicDamage += addingDammage;
-                            uun.inv.Items[i].amount -= NeededItemCost;
+                            uun.inv.InventorySlots[i].amount -= NeededItemCost;
                         }
                     }
                 }
@@ -45,20 +45,20 @@ public class UpgradeButtonMethods : MonoBehaviour
 
             if(NeedExtra)
             {
-                if (uun.inv.Items[i] != null)
+                if (uun.inv.InventorySlots[i] != null)
                 {
-                    for(int j = 0; j < uun.inv.Items.Count; i++)
+                    for(int j = 0; j < uun.inv.InventorySlots.Count; i++)
                     {
-                        if(uun.inv.Items[j] != null)
+                        if(uun.inv.InventorySlots[j] != null && uun.inv.InventorySlots[j] != uun.inv.InventorySlots[i])
                         {
-                            if (uun.inv.Items[i].Objname == NeededItem && uun.inv.Items[j].Objname == ExtraNeededItem)
+                            if (uun.inv.InventorySlots[i].Objname == NeededItem && uun.inv.InventorySlots[j].Objname == ExtraNeededItem)
                             {
-                                if (uun.inv.Items[i].amount >= NeededItemCost && uun.inv.Items[j].amount >= ExtraNeededItemCost)
+                                if (uun.inv.InventorySlots[i].amount >= NeededItemCost && uun.inv.InventorySlots[j].amount >= ExtraNeededItemCost)
                                 {
                                     uun.lvl += 1;
                                     playerCombat.CurrentWeaponHolder.weapon.weaponData.WeaponBasicDamage += addingDammage;
-                                    uun.inv.Items[i].amount -= NeededItemCost;
-                                    uun.inv.Items[j].amount -= ExtraNeededItemCost;
+                                    uun.inv.InventorySlots[i].amount -= NeededItemCost;
+                                    uun.inv.InventorySlots[j].amount -= ExtraNeededItemCost;
                                 }
                             }
                         }
@@ -72,19 +72,19 @@ public class UpgradeButtonMethods : MonoBehaviour
     public void DecreaseStaminaDrain(int decreasingStamina)
     {
         bool NeedExtra = uun.IsExtra;
-        for (int i = 0; i < uun.inv.Items.Count; i++)
+        for (int i = 0; i < uun.inv.InventorySlots.Count; i++)
         {
             if (!NeedExtra)
             {
-                if (uun.inv.Items[i] != null)
+                if (uun.inv.InventorySlots[i] != null)
                 {
-                    if (uun.inv.Items[i].Objname == NeededItem)
+                    if (uun.inv.InventorySlots[i].Objname == NeededItem)
                     {
-                        if (uun.inv.Items[i].amount >= NeededItemCost)
+                        if (uun.inv.InventorySlots[i].amount >= NeededItemCost)
                         {
                             uun.lvl += 1;
                             playerCombat.CurrentWeaponHolder.weapon.weaponData.WeaponStaminaCost -= decreasingStamina;
-                            uun.inv.Items[i].amount -= NeededItemCost;
+                            uun.inv.InventorySlots[i].amount -= NeededItemCost;
                         }
                     }
                 }
@@ -92,20 +92,20 @@ public class UpgradeButtonMethods : MonoBehaviour
 
             if (NeedExtra)
             {
-                if (uun.inv.Items[i] != null)
+                if (uun.inv.InventorySlots[i] != null)
                 {
-                    for (int j = 0; j < uun.inv.Items.Count; i++)
+                    for (int j = 0; j < uun.inv.InventorySlots.Count; i++)
                     {
-                        if (uun.inv.Items[j] != null)
+                        if (uun.inv.InventorySlots[j] != null)
                         {
-                            if (uun.inv.Items[i].Objname == NeededItem && uun.inv.Items[j].Objname == ExtraNeededItem)
+                            if (uun.inv.InventorySlots[i].Objname == NeededItem && uun.inv.InventorySlots[j].Objname == ExtraNeededItem)
                             {
-                                if (uun.inv.Items[i].amount >= NeededItemCost && uun.inv.Items[j].amount >= ExtraNeededItemCost)
+                                if (uun.inv.InventorySlots[i].amount >= NeededItemCost && uun.inv.InventorySlots[j].amount >= ExtraNeededItemCost)
                                 {
                                     uun.lvl += 1;
                                     playerCombat.CurrentWeaponHolder.weapon.weaponData.WeaponStaminaCost -= decreasingStamina;
-                                    uun.inv.Items[i].amount -= NeededItemCost;
-                                    uun.inv.Items[j].amount -= ExtraNeededItemCost;
+                                    uun.inv.InventorySlots[i].amount -= NeededItemCost;
+                                    uun.inv.InventorySlots[j].amount -= ExtraNeededItemCost;
                                 }
                             }
                         }
@@ -119,19 +119,19 @@ public class UpgradeButtonMethods : MonoBehaviour
     public void IncreaseSuperAttack(int increaseDammage)
     {
         bool NeedExtra = uun.IsExtra;
-        for (int i = 0; i < uun.inv.Items.Count; i++)
+        for (int i = 0; i < uun.inv.InventorySlots.Count; i++)
         {
             if (!NeedExtra)
             {
-                if (uun.inv.Items[i] != null)
+                if (uun.inv.InventorySlots[i] != null)
                 {
-                    if (uun.inv.Items[i].Objname == NeededItem)
+                    if (uun.inv.InventorySlots[i].Objname == NeededItem)
                     {
-                        if (uun.inv.Items[i].amount >= NeededItemCost)
+                        if (uun.inv.InventorySlots[i].amount >= NeededItemCost)
                         {
                             uun.lvl += 1;
                             playerCombat.CurrentWeaponHolder.weapon.weaponData.WeaponSuperAttackDamage += increaseDammage;
-                            uun.inv.Items[i].amount -= NeededItemCost;
+                            uun.inv.InventorySlots[i].amount -= NeededItemCost;
                         }
                     }
                 }
@@ -141,18 +141,18 @@ public class UpgradeButtonMethods : MonoBehaviour
             {
                 if (uun.inv.Items[i] != null)
                 {
-                    for (int j = 0; j < uun.inv.Items.Count; i++)
+                    for (int j = 0; j < uun.inv.InventorySlots.Count; i++)
                     {
-                        if (uun.inv.Items[j] != null)
+                        if (uun.inv.InventorySlots[j] != null)
                         {
-                            if (uun.inv.Items[i].Objname == NeededItem && uun.inv.Items[j].Objname == ExtraNeededItem)
+                            if (uun.inv.Items[i].Objname == NeededItem && uun.inv.InventorySlots[j].Objname == ExtraNeededItem)
                             {
-                                if (uun.inv.Items[i].amount >= NeededItemCost && uun.inv.Items[j].amount >= ExtraNeededItemCost)
+                                if (uun.inv.InventorySlots[i].amount >= NeededItemCost && uun.inv.InventorySlots[j].amount >= ExtraNeededItemCost)
                                 {
                                     uun.lvl += 1;
                                     playerCombat.CurrentWeaponHolder.weapon.weaponData.WeaponSuperAttackDamage += increaseDammage;
-                                    uun.inv.Items[i].amount -= NeededItemCost;
-                                    uun.inv.Items[j].amount -= ExtraNeededItemCost;
+                                    uun.inv.InventorySlots[i].amount -= NeededItemCost;
+                                    uun.inv.InventorySlots[j].amount -= ExtraNeededItemCost;
                                 }
                             }
                         }
@@ -166,19 +166,19 @@ public class UpgradeButtonMethods : MonoBehaviour
     public void IncreaseHealth(int increaseHealth)
     {
         bool NeedExtra = uun.IsExtra;
-        for (int i = 0; i < uun.inv.Items.Count; i++)
+        for (int i = 0; i < uun.inv.InventorySlots.Count; i++)
         {
             if (!NeedExtra)
             {
-                if (uun.inv.Items[i] != null)
+                if (uun.inv.InventorySlots[i] != null)
                 {
-                    if (uun.inv.Items[i].Objname == NeededItem)
+                    if (uun.inv.InventorySlots[i].Objname == NeededItem)
                     {
-                        if (uun.inv.Items[i].amount >= NeededItemCost)
+                        if (uun.inv.InventorySlots[i].amount >= NeededItemCost)
                         {
                             uun.lvl += 1;
                             playerProfile.profile.PlayerHealth += increaseHealth;
-                            uun.inv.Items[i].amount -= NeededItemCost;
+                            uun.inv.InventorySlots[i].amount -= NeededItemCost;
                         }
                     }
                 }
@@ -186,20 +186,20 @@ public class UpgradeButtonMethods : MonoBehaviour
 
             if (NeedExtra)
             {
-                if (uun.inv.Items[i] != null)
+                if (uun.inv.InventorySlots[i] != null)
                 {
-                    for (int j = 0; j < uun.inv.Items.Count; i++)
+                    for (int j = 0; j < uun.inv.InventorySlots.Count; i++)
                     {
-                        if (uun.inv.Items[j] != null)
+                        if (uun.inv.InventorySlots[j] != null)
                         {
-                            if (uun.inv.Items[i].Objname == NeededItem && uun.inv.Items[j].Objname == ExtraNeededItem)
+                            if (uun.inv.InventorySlots[i].Objname == NeededItem && uun.inv.InventorySlots[j].Objname == ExtraNeededItem)
                             {
-                                if (uun.inv.Items[i].amount >= NeededItemCost && uun.inv.Items[j].amount >= ExtraNeededItemCost)
+                                if (uun.inv.InventorySlots[i].amount >= NeededItemCost && uun.inv.InventorySlots[j].amount >= ExtraNeededItemCost)
                                 {
                                     uun.lvl += 1;
                                     playerProfile.profile.PlayerHealth += increaseHealth;
-                                    uun.inv.Items[i].amount -= NeededItemCost;
-                                    uun.inv.Items[j].amount -= ExtraNeededItemCost;
+                                    uun.inv.InventorySlots[i].amount -= NeededItemCost;
+                                    uun.inv.InventorySlots[j].amount -= ExtraNeededItemCost;
                                 }
                             }
                         }
@@ -213,19 +213,19 @@ public class UpgradeButtonMethods : MonoBehaviour
     public void IncreaseStamina(int increaseStamina)
     {
         bool NeedExtra = uun.IsExtra;
-        for (int i = 0; i < uun.inv.Items.Count; i++)
+        for (int i = 0; i < uun.inv.InventorySlots.Count; i++)
         {
             if (!NeedExtra)
             {
-                if (uun.inv.Items[i] != null)
+                if (uun.inv.InventorySlots[i] != null)
                 {
-                    if (uun.inv.Items[i].Objname == NeededItem)
+                    if (uun.inv.InventorySlots[i].Objname == NeededItem)
                     {
-                        if (uun.inv.Items[i].amount >= NeededItemCost)
+                        if (uun.inv.InventorySlots[i].amount >= NeededItemCost)
                         {
                             uun.lvl += 1;
                             playerProfile.profile.PlayerStamina += increaseStamina;
-                            uun.inv.Items[i].amount -= NeededItemCost;
+                            uun.inv.InventorySlots[i].amount -= NeededItemCost;
                         }
                     }
                 }
@@ -233,20 +233,20 @@ public class UpgradeButtonMethods : MonoBehaviour
 
             if (NeedExtra)
             {
-                if (uun.inv.Items[i] != null)
+                if (uun.inv.InventorySlots[i] != null)
                 {
-                    for (int j = 0; j < uun.inv.Items.Count; i++)
+                    for (int j = 0; j < uun.inv.InventorySlots.Count; i++)
                     {
-                        if (uun.inv.Items[j] != null)
+                        if (uun.inv.InventorySlots[j] != null)
                         {
-                            if (uun.inv.Items[i].Objname == NeededItem && uun.inv.Items[j].Objname == ExtraNeededItem)
+                            if (uun.inv.InventorySlots[i].Objname == NeededItem && uun.inv.InventorySlots[j].Objname == ExtraNeededItem)
                             {
-                                if (uun.inv.Items[i].amount >= NeededItemCost && uun.inv.Items[j].amount >= ExtraNeededItemCost)
+                                if (uun.inv.InventorySlots[i].amount >= NeededItemCost && uun.inv.InventorySlots[j].amount >= ExtraNeededItemCost)
                                 {
                                     uun.lvl += 1;
                                     playerProfile.profile.PlayerStamina += increaseStamina;
-                                    uun.inv.Items[i].amount -= NeededItemCost;
-                                    uun.inv.Items[j].amount -= ExtraNeededItemCost;
+                                    uun.inv.InventorySlots[i].amount -= NeededItemCost;
+                                    uun.inv.InventorySlots[j].amount -= ExtraNeededItemCost;
                                 }
                             }
                         }

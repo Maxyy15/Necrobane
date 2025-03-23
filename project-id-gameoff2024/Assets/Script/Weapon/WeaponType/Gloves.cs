@@ -5,13 +5,13 @@ public class Gloves : Weapon
 
     public override void HandleFirstAttack()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    PlayerCombat.IsAttacking = true;
+       // if (Input.GetMouseButtonDown(0))
+       // {
+            //PlayerCombat.IsAttacking = true;
 
-        //    PlayerCombat.PlayerController.maxSpeed /= 2f;
-        //    PlayerCombat.PlayerAnimation.PeformBasicPunchAttackAnim();
-        //    Debug.Log("FIRST ATTACK");
+            //PlayerCombat.PlayerController.maxSpeed /= 2f;
+            //PlayerCombat.PlayerAnimation.PeformBasicPunchAttackAnim();
+            //Debug.Log("FIRST ATTACK");
         //}
     }
 
