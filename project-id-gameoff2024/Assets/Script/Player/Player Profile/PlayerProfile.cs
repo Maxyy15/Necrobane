@@ -16,6 +16,9 @@ public class PlayerProfile : MonoBehaviour
 
     private void Start()
     {
+        profile.PlayerHealth = 100f;
+        profile.PlayerStamina = 100f;
+
         playerHealth = profile.PlayerHealth;
         playerStamina = profile.PlayerStamina;
     }
