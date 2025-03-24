@@ -54,6 +54,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Others")]
     public NavMeshAgent navMeshAgent;
+    public EnemyList enemyList;
     public Transform player { get; set; }
 
     [Header("Wwise")]
