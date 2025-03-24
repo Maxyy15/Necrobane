@@ -13,7 +13,7 @@ public class SlowdownManager : MonoBehaviour
     void Start()
     {
         originalTimeScale = Time.timeScale;
-        originalFixedDeltaTime = Time.fixedDeltaTime; // Store original fixed delta time
+        originalFixedDeltaTime = Time.fixedDeltaTime;
     }
 
     void Update()
@@ -30,14 +30,14 @@ public class SlowdownManager : MonoBehaviour
             else
             {
                 Time.timeScale = originalTimeScale;
-                Time.fixedDeltaTime = originalFixedDeltaTime; // Restore original fixed delta time
+                Time.fixedDeltaTime = originalFixedDeltaTime; 
                 isTimeSlowed = false;
             }
         }
         if (playerProfile.playerStamina <= 10)
         {
             Time.timeScale = originalTimeScale;
-            Time.fixedDeltaTime = originalFixedDeltaTime; // Restore original fixed delta time
+            Time.fixedDeltaTime = originalFixedDeltaTime;
             isTimeSlowed = false;
         }
         if (isTimeSlowed)

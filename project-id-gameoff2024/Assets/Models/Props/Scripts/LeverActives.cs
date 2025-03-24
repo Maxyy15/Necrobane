@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LeverActives : MonoBehaviour
 {
     private Animator anim;
     public bool active;
+    public UnityEvent onLeverPulled;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -13,11 +16,12 @@ public class LeverActives : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (anim.GetBool("On"))
+        if (anim.GetBool("On") && !active) 
         {
             active = true;
+            onLeverPulled?.Invoke();
         }
-        else if (!anim.GetBool("On"))
+        else if (!anim.GetBool("On") && active)
         {
             active = false;
         }
