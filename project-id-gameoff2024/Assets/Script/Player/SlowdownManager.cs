@@ -5,27 +5,44 @@ public class SlowdownManager : MonoBehaviour
     public float slowdownFactor = 0.1f;
     public KeyCode slowdownKey = KeyCode.Z;
     private float originalTimeScale;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private float originalFixedDeltaTime;
+    public PlayerProfile playerProfile;
+
+    public bool isTimeSlowed;
+
     void Start()
     {
         originalTimeScale = Time.timeScale;
+        originalFixedDeltaTime = Time.fixedDeltaTime; // Store original fixed delta time
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(slowdownKey))
+        if (Input.GetKeyDown(slowdownKey))
         {
-            if (Time.timeScale == 1)
+            if (Time.timeScale == originalTimeScale)
             {
                 Time.timeScale = slowdownFactor;
-                Time.fixedDeltaTime *= slowdownFactor;
+                Time.fixedDeltaTime = originalFixedDeltaTime * slowdownFactor;
+                isTimeSlowed = true;
+                
             }
             else
             {
                 Time.timeScale = originalTimeScale;
-                Time.fixedDeltaTime *= originalTimeScale;
+                Time.fixedDeltaTime = originalFixedDeltaTime; // Restore original fixed delta time
+                isTimeSlowed = false;
             }
+        }
+        if (playerProfile.playerStamina <= 10)
+        {
+            Time.timeScale = originalTimeScale;
+            Time.fixedDeltaTime = originalFixedDeltaTime; // Restore original fixed delta time
+            isTimeSlowed = false;
+        }
+        if (isTimeSlowed)
+        {
+            playerProfile.DeductStamina(0.2f);
         }
     }
 }
