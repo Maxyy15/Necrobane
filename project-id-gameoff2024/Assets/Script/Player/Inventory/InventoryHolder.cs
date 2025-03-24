@@ -1,3 +1,5 @@
+//Fixed bug where items would get doubled when picked up
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;

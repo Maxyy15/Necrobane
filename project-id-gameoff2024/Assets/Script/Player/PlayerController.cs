@@ -1,3 +1,5 @@
+//Added a sprint mechanic as I felt the gameplay was a bit too slow
+
 using UnityEngine;
 using AK.Wwise;
 using UnityEngine.EventSystems;
